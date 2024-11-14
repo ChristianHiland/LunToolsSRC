@@ -63,6 +63,6 @@ mod tests {
     fn add_path_test() {
         let result = add_to_PWD("tests/data/test.json".to_string(), false);
         let expected_result = format!("{}/{}", get_pwd(), "tests/data/test.json");
-        assert_eq!(result, "C:\\Users\\hilan\\Documents\\Code\\Rust\\LunTools\\LunToolsSRC\\tests\\data\\test.json".to_string());
+        assert_eq!(result, expected_result);
     }
 }
