@@ -15,6 +15,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3 # Downloading This Repo?
-      - uses: githubocto/repo-visualizer@latest # Downloading This Repo?
+      - uses: githubocto/repo-visualizer@0.9.1 # Downloading This Repo?
         with:
           output_file: 'Documentation/Images/repo-diagram.svg'
