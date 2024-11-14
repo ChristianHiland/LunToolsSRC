@@ -32,7 +32,7 @@ pub fn add_to_PWD(path: String, debug: bool) -> String {
     // 2. Convert The &Path into a String.
     let pwd_path = pwd_path.to_str().unwrap().to_string();
     // 3. Add The Current Working DIR with the path that was given by FUNC.
-    let added_path = format!("{}{}{}", pwd_path, "\\src\\", path);
+    let added_path = format!("{}{}{}", pwd_path, "\\", path);
     // 4. Returns the Current Working DIR with the 'path' added to the end.
     return added_path;
 }
@@ -51,17 +51,17 @@ mod tests {
     // Tests The 'get_pwd' func.
     #[test]
     fn get_pwd_test() {
-        path::get_pwd();
+        get_pwd();
     }
     // Tests The 'get_exe' func.
     #[test]
-    fn get_exe_tet() {
-        path::get_exe();
+    fn get_exe_test() {
+        get_exe();
     }
     // Tests The 'add_path' func.
     #[test]
     fn add_path_test() {
-        let result = path::add_path("tests/data/test.json".to_string(), false);
+        let result = add_to_PWD("tests\\data\\test.json".to_string(), false);
         assert_eq!(result, "C:\\Users\\hilan\\Documents\\Code\\Rust\\LunTools\\LunToolsSRC\\tests\\data\\test.json".to_string());
     }
 }

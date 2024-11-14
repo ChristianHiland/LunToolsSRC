@@ -3,6 +3,10 @@ name = "LunTools"
 version = "0.1.0"
 edition = "2021"
 
+[[bin]]
+name = "LunTools"
+path = "main.rs"  # Optional: specify the path to the main source file
+
 [dependencies]
 serde = "1.0.214"
 serde_json = "1.0.132"

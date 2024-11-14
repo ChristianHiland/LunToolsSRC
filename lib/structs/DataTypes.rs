@@ -3,6 +3,22 @@ use std::fmt;                                       // Importing Fmt from std.
 
 // Structs
 
+// Struct: Tuple_DOB: u8, u8, u16
+pub struct Tuple_DOB {
+    pub month: u8,
+    pub day: u8,
+    pub year: u16,
+}
+// Struct: Tuple_DOB: u8, u8, u16, u8, u8, u8
+pub struct Tuple_Last_Login {
+    pub month: u8,
+    pub day: u8,
+    pub year: u16,
+    pub hour: u8,
+    pub min: u8,
+    pub sec: u8,
+}
+
 // Struct: DB_Lite_people: name, age
 pub struct DB_Lite_people {
     pub name: String,
@@ -12,15 +28,15 @@ pub struct DB_Lite_people {
 pub struct DB_Base_people {
     pub name: String,
     pub age: u8,
-    pub dob: (u8, u8, u16),
-    pub last_login: (u8, u8, u16, u8, u8, u8),
+    pub dob: Tuple_DOB,
+    pub last_login: Tuple_Last_Login,
 }
 // Struct: DB_CUS_people: name, age, date of brith, last login.
 pub struct DB_CUS_people {
     pub name: String,
     pub age: u8,
-    pub dob: (u8, u8, u16),
-    pub last_login: (u8, u8, u16, u8, u8, u8),
+    pub dob: Tuple_DOB,
+    pub last_login: Tuple_Last_Login,
     pub pfp: String,
 }
 
@@ -50,6 +66,21 @@ impl fmt::Display for DB_CUS_people {
     }
 }
 
+/// Docstring:
+/// Implement Display trait for Tuple_DOB to convert to string.
+impl fmt::Display for Tuple_DOB {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        write!(f, "Month: {} Day: {} Year: {}", self.month, self.day, self.year)
+    }
+}
+
+/// Docstring:
+/// Implement Display trait for Tuple_Last_Login to convert to string.
+impl fmt::Display for Tuple_Last_Login {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        write!(f, "Month: {} Day: {} Year: {} Hour: {} Min: {} Sec: {}", self.month, self.day, self.year, self.hour, self.min, self.sec)
+    }
+}
 
 // TESTING (cargo)
 
@@ -64,9 +95,9 @@ mod tests {
     /// 3. Assert that the String is "Name: leelunbin Age: 15 Date of Birth: 10, 13, 2009 Last Login: 11, 11, 2024, 7, 31, 50".
     /// 4. Return ok if it works.
     fn DB_Base_people_Test() {
-        let DB_Base_people_STest: DB_Base_people = DB_Base_people {name: "leelunbin".to_string(), age: 15, dob: (10, 13, 2009), (11, 11, 2024, 7, 31, 50)};
+        let DB_Base_people_STest: DB_Base_people = DB_Base_people {name: "leelunbin".to_string(), age: 15, dob: Tuple_DOB {day: 10, month: 13, year: 2009}, last_login: Tuple_Last_Login {month: 11, day: 11, year: 2024, hour: 7, min: 31, sec: 50}};
         let DB_Base_peopleFORMAT_Test: String = DB_Base_people_STest.to_string();
-        assert_eq!(DB_Base_peopleFORMAT_Test, "Name: leelunbin Age: 15 Date of Birth: 10, 13, 2009 Last Login: 11, 11, 2024, 7, 31, 50");
+        assert_eq!(DB_Base_peopleFORMAT_Test, "Name: leelunbin Age: 15 Date of Birth: Month: 13 Day: 10 Year: 2009 Last Login: Month: 11 Day: 11 Year: 2024 Hour: 7 Min: 31 Sec: 50".to_string());
     }
 
     #[test]
@@ -88,8 +119,8 @@ mod tests {
     /// 3. Assert that the String is "Name: leelunbin Age: 15 Date of Birth: 10, 13, 2009 Last Login: 11, 11, 2024, 7, 31, 50".
     /// 4. Return ok if it works.
     fn DB_CUS_people_Test() {
-        let DB_CUS_people_STest: DB_CUS_people = DB_CUS_people {name: "leelunbin".to_string(), age: 15, dob: (10, 13, 2009), (11, 11, 2024, 7, 31, 50), pfp: "leelunbin.png".to_string()};
-        let DB_CUS_peopleFORMAT_Test: String = DB_CUS_people_STest.to_string();
-        assert_eq!(DB_CUS_peopleFORMAT_Test, "Name: leelunbin Age: 15 Date of Birth: 10, 13, 2009 Last Login: 11, 11, 2024, 7, 31, 50, PFP: leelunbin.png");
+        let DB_CUS_people_STest: DB_CUS_people = DB_CUS_people {name: "leelunbin".to_string(), age: 15, dob: Tuple_DOB {day: 10, month: 13, year: 2009}, last_login: Tuple_Last_Login {month: 11, day: 11, year: 2024, hour: 7, min: 31, sec:50}, pfp: "leelunbin.png".to_string()};
+        let DB_CUS_peopleFORMAT_Test = DB_CUS_people_STest.to_string();
+        assert_eq!(DB_CUS_peopleFORMAT_Test, "Name: leelunbin Age: 15 Date of Birth: Month: 13 Day: 10 Year: 2009 Last Login: Month: 11 Day: 11 Year: 2024 Hour: 7 Min: 31 Sec: 50 PFP: leelunbin.png".to_string());
     }
 }

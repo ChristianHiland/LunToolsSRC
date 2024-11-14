@@ -3,6 +3,6 @@
 //! and even Database based var types
 
 // Importing DateTime as a module.
-pub mod DateTime;
+mod DateTime;
 // Importing DataTypes as a module.
-pub mod DataTypes;
+mod DataTypes;
