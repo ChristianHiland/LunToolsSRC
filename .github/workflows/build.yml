@@ -13,16 +13,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v4
+      uses: actions/checkout@v4
 
-    - name: Build
-      if: github.event.inputs.logLevel == 'build' || github.event.inputs.logLevel == 'release' 
-      run: cargo build --verbose
-
-    - name: Run tests
-      if: github.event.inputs.logLevel == 'test' 
-      run: cargo test --verbose
-
-    - name: Release
-      if: github.event.inputs.logLevel == 'release'
-      run: echo "RELEASE HIT"
+      name: Build Project # This Actually builds the Project
+      run: zip --junk-paths my-artifact README.md
+      
+    
