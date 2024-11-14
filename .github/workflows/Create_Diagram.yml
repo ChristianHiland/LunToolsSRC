@@ -17,4 +17,4 @@ jobs:
       - uses: actions/checkout@v3 # Downloading This Repo?
       - uses: githubocto/repo-visualizer@v2 # Downloading This Repo?
         with:
-          output_file: 'Documentation/Images'
+          output_file: 'Documentation/Images/repo-diagram.svg'
