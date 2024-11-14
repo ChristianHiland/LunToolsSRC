@@ -1,0 +1,25 @@
+name: Create Diagram
+
+# Triggers For Action
+on:
+  # IDK yet
+  workflow_dispatch: {}
+  # Triggers based with a push given (Updating and uploading.)
+  push:
+    # IDK yet
+    branches:
+      - main
+
+# Main Action
+jobs:
+  get_data:
+    runs-on: ubuntu-latest
+    steps:
+        # Name of This Section
+      - name: Checkout code
+        # Downloads the Checkout Repo?
+        uses: actions/checkout@master
+      - name: Update Diagram
+        uses: githubocto/repo-visualizer@main
+        with:
+          excluded_paths: "ignore, .github"
