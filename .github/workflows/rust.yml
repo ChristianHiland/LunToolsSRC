@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
     inputs:
       logLevel:
-        description: 'Run as: '
+        description: 'Run as:'
         required: true
         default: 'test'
         type: choice
@@ -25,7 +25,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
-    - name: Build
-      run: cargo build --verbose
+    - name: build
+      run: ls -l && pwd
     - name: Run tests
       run: cargo test --verbose
