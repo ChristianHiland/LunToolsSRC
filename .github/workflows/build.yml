@@ -1,0 +1,21 @@
+name: Build to Release
+
+on:
+  push:
+  # Sequence of patterns matched against refs/tags
+    tags:
+    - 'v*' # Push events to matching v*, i.e. v1.0, v20.15.10
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      uses: actions/checkout@v4
+
+      name: Build Project # This Actually builds the Project
+      run: zip --junk-paths my-artifact README.md
+      
+    
