@@ -32,7 +32,7 @@ pub fn add_to_PWD(path: String, debug: bool) -> String {
     // 2. Convert The &Path into a String.
     let pwd_path = pwd_path.to_str().unwrap().to_string();
     // 3. Add The Current Working DIR with the path that was given by FUNC.
-    let added_path = format!("{}{}{}", pwd_path, "\\", path);
+    let added_path = format!("{}{}{}", pwd_path, "/", path);
     // 4. Returns the Current Working DIR with the 'path' added to the end.
     return added_path;
 }
