@@ -25,7 +25,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
-    - name: build
+    - name: Build
       run: ls -l && pwd
     - name: Run tests
       run: cargo test --verbose
