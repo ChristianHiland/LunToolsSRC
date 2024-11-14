@@ -1,0 +1,47 @@
+
+// Libs
+
+// Modules (By Me)
+mod path;
+mod json;
+
+// TESTING (Cargo)
+mod tests;
+
+fn main() {
+    println!("Running get PWD");
+    let pwd_path = path::get_pwd();
+    println!("PWD: {:#?}", pwd_path);
+    println!("Running get exe");
+    let exepath = path::get_exe();
+    println!("EXE Path: {:#?}", exepath);
+    println!("Running Add Path");
+    let jsonfile = path::add_path("test.json".to_string(), false);
+    println!("JSON Path: {}", jsonfile);
+
+    println!("Running JSON Read");
+    match json::json_read(jsonfile, false) {
+        Ok(data) => println!("Read JSON data: {}", data),
+        Err(e) => println!("Error reading JSON file: {}", e),
+    }
+
+    println!("Running Write JSON");
+    // 1. Setting/Getting the whole path for 'test.json'.
+    let jsonfile = path::add_path("test.json".to_string(), false);
+    // 2. Making a json formated String.
+    let data = serde_json::json!({
+        "test": "test"
+    });
+    // 3. Write To JSON File.
+    json::json_write(jsonfile, data, false);
+
+    // 4. Checking for change
+    let jsonfile = path::add_path("test.json".to_string(), false);
+    match json::json_read(jsonfile, false) {
+        Ok(data) => {
+            let data_str = data.to_string();
+            println!("Data Got Back: {}", data_str);
+        },
+        Err(e) => println!("Error With Reading JSON File: {}", e),
+    }
+}
