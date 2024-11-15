@@ -1,5 +1,8 @@
 name: Create Diagram
 
+permissions:
+    contents: write  # Grant write access to the repository contents
+
 # Triggers For Action
 on:
   # IDK yet
@@ -8,13 +11,17 @@ on:
   push:
     # When There's a push to the DEV, branch
     branches: [ DEV ]
-
+    
 # Main Action
 jobs:
+  # Workflow Name (Task)
   visualize:
+    # Running on:
     runs-on: ubuntu-latest
+    # Different steps
     steps:
       - uses: actions/checkout@v3 # Downloading This Repo?
       - uses: githubocto/repo-visualizer@0.9.1 # Downloading This Repo?
         with:
+          # Saving as:
           output_file: 'Documentation/Images/repo-diagram.svg'
