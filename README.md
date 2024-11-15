@@ -55,6 +55,9 @@ LunTools are a library programmed in Rust to help Lunbins life a bit easer with 
 
 ---
 
+## Repo's Files & Struct
+![Repo Visualization](Documentation/Images/repo-diagram.svg)
+
 ## TODO / CHECKLIST
 <!-- Using HTML for Check List -->
 <ul>
